@@ -1,8 +1,14 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Svelte",
+  "_version": "4.0.0",
+
   "compilerOptions": {
+    "sourceMap": true,
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node"
   },
-  "include": ["src/**/*"],
+  "include": ["vite.config.ts"],
+  "extends": "@tsconfig/svelte/tsconfig.json"
 }
