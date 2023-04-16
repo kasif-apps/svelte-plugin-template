@@ -11,10 +11,10 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
+    "@kasif-apps/app": "^0.0.0",
     "@sveltejs/vite-plugin-svelte": "^2.0.3",
     "@tsconfig/svelte": "^3.0.0",
     "@types/node": "^18.15.11",
-    "@kasif-apps/app": "^0.0.0",
     "svelte": "^3.55.1",
     "svelte-check": "^2.10.3",
     "tslib": "^2.5.0",
@@ -27,9 +27,16 @@
     "name": "Svelte Plugin Template",
     "identifier": "svelte-plugin-template",
     "entry": "entry",
+    "backend": {
+      "dir": "remote",
+      "entry": "index"
+    },
     "permissions": [
       "push_view",
       "show_notifications"
     ]
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1"
   }
 }

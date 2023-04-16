@@ -1,10 +1,10 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { build } from "vite";
-import dts from "vite-plugin-dts";
 import { zip } from "zip-a-folder";
+import { svelte } from "@sveltejs/vite-plugin-svelte";
 import fs from "fs";
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import fse from "fs-extra";
 
 const dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -13,11 +13,8 @@ async function $compile() {
     plugins: [
       svelte({
         compilerOptions: {
-          css: true
-        }
-      }),
-      dts({
-        insertTypesEntry: true,
+          css: true,
+        },
       }),
     ],
     build: {
@@ -54,9 +51,18 @@ async function $package() {
     path.join(dirname, "/plugin/package.json")
   );
 
+  fse.copySync(
+    path.join(dirname, `/src/${process.env.npm_package_kasif_backend_dir}`),
+    path.join(dirname, `/plugin/${process.env.npm_package_kasif_backend_dir}`),
+    { overwrite: true }
+  );
+
   await zip(
     path.join(dirname, "/plugin"),
-    path.join(dirname, `/dist/${process.env.npm_package_kasif_identifier}.kasif`)
+    path.join(
+      dirname,
+      `/dist/${process.env.npm_package_kasif_identifier}.kasif`
+    )
   );
 
   await fs.promises.rm(path.join(dirname, "/plugin"), {

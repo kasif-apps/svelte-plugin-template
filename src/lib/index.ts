@@ -2,13 +2,19 @@ import App from "./App.svelte";
 import type { App as KasifApp } from "@kasif-apps/app";
 
 export function init(app: KasifApp) {
-  app.notificationManager.success("Hello World");
+  app.notificationManager.success("Hello from svelte plugin", "Hello");
 
   app.viewManager.pushView({
     view: {
       id: "svelte-plugin",
       title: "Svelte Plugin",
-      icon: null,
+      icon: {
+        type: "icon",
+        render: "brand-svelte",
+        props: {
+          size: 18
+        }
+      },
       render: {
         render(parent) {
           new App({

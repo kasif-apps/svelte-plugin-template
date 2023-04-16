@@ -1,5 +1,5 @@
 <script lang="ts">
-  let count = 1;
+  let count = 0;
 </script>
 
 <div id="svelte-plugin">
