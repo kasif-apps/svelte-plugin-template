@@ -3,5 +3,5 @@
 </script>
 
 <div id="svelte-plugin">
-  <button on:click={() => count++}>Count: {count}</button>
+  <button on:click={() => count++}>Count is {count}</button>
 </div>

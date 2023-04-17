@@ -1,0 +1,11 @@
+{
+  "lint": {
+    "files": {
+      "include": ["src/remote"],
+      "exclude": ["src/lib/"]
+    },
+    "rules": {
+      "exclude": ["require-await"]
+    }
+  }
+}

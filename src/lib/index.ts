@@ -1,8 +1,10 @@
 import App from "./App.svelte";
 import type { App as KasifApp } from "@kasif-apps/app";
+import { greet } from "../remote/index";
 
-export function init(app: KasifApp) {
-  app.notificationManager.success("Hello from svelte plugin", "Hello");
+export async function init(app: KasifApp) {
+  const message = await greet("from svelte plugin")
+  app.notificationManager.success(message, "Hello");
 
   app.viewManager.pushView({
     view: {
@@ -16,7 +18,7 @@ export function init(app: KasifApp) {
         }
       },
       render: {
-        render(parent) {
+        render(parent: HTMLElement) {
           new App({
             target: parent,
           });
